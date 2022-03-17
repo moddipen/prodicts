@@ -9,7 +9,13 @@ class Dashboard extends CI_Controller {
         if(!$this->session->userdata('id'))
         {
             redirect('user');
-        } 
+        } else {
+            if($this->session->userdata('role') != 'admin'){
+                redirect('product');
+            }
+
+        }
+
     }
 
     function index(){

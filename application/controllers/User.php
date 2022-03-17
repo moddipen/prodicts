@@ -26,7 +26,12 @@ class User extends CI_Controller {
             $result = $this->user_model->can_login($this->input->post('user_email'),$this->input->post('user_password'));
             
             if($result == ''){
-                redirect('dashboard');
+                if($this->session->userdata('role')=='admin'){
+                    redirect('dashboard');
+                }else {
+                    redirect('product');
+                }
+                
             } else {
                 $this->session->set_flashdata('message',$result);
                 redirect('user');
@@ -53,7 +58,8 @@ class User extends CI_Controller {
                 'email' => $this->input->post('user_email'),
                 'password' => $encrypt_password,
                 'verification_key' => $verification_key,
-                'isVerified' =>0
+                'isVerified' =>0,
+                'role' =>'user'
             );
             $id = $this->user_model->insert($data);
 
@@ -94,19 +100,7 @@ class User extends CI_Controller {
     }
 
 
-                // $this->load->library('email',$config);
-                // $this->email->set_newline();
-                // $this->email->from('moddipen@gmail.com');
-                // $this->email->to($this->input->post('user_email'));
-                // $this->email->subject($subject);
-                // $this->email->message($message);
-                // if($this->email->send()){
-                //     $this->session->set_flashdata('message','Please check your mail');
-                //     redirect('user'); 
-
-                // } else {
-                //     echo $message;
-                // }
+            
             }
 
              

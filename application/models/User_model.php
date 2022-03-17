@@ -38,6 +38,7 @@ class User_model extends CI_Model
                 if($store_password == $row->password)
                 {
                     $this->session->set_userdata('id',$row->id);
+                    $this->session->set_userdata('role',$row->role);
                 } else{
                     return "Wrong Password";
                 }
