@@ -25,6 +25,22 @@ class User_model extends CI_Model
         }
     }
 
+    function activeUserCount(){
+        $this->db->where('isVerified',1);
+        $this->db->where('role','user');
+        return $this->db->get('users')->num_rows();
+    
+    }
+
+
+    function activepurchaseUserCount(){
+        $this->db->distinct();
+        $this->db->select('user_id');
+        return $this->db->get('userpurchase')->num_rows();
+    }
+
+
+    
 
     function can_login($email,$password)
     {

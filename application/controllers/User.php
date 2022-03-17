@@ -29,7 +29,7 @@ class User extends CI_Controller {
                 if($this->session->userdata('role')=='admin'){
                     redirect('admin/dashboard');
                 }else {
-                    redirect('product');
+                    redirect('userproduct');
                 }
                 
             } else {

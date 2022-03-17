@@ -15,6 +15,41 @@ class Product_model extends CI_Model
 
     }
 
+    public function activeFindAllCount(){
+        $this->db->where('status','active');
+        return $this->db->get('products')->num_rows();
+
+    }
+
+    public function activeattachproductqty(){
+
+        $this->db->select_sum('qty');
+        $query = $this->db->get('userpurchase')->row();
+        return $query->qty;
+    }
+
+    public function activeattachproductprice(){
+
+        $this->db->select_sum('price');
+        $query = $this->db->get('userpurchase')->row();
+        return $query->price;
+    }
+
+
+    public function userbypurchaseSum(){
+        $this->db->select('user_id, SUM(price) AS price', FALSE);
+        $this->db->group_by("user_id");
+        return $this->db->get('userpurchase')->result();
+
+        // $this->db->select_sum('price');
+        // $query = $this->db->get('userpurchase')->row();
+        // return $query->price;
+    }
+    
+
+
+    
+
     public function buyProducts($data){
        
         $this->db->select('qty');
