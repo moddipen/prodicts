@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,69 +17,6 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>public/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition sidebar-mini">
-<div class="wrapper">
-      <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-  
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <!-- Sidebar Menu -->
-    <nav class="mt-2">
-      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library -->
-        <li class="nav-item menu-open">
-              <a href="./dashboard" class="nav-link active">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Dashboard</p>
-              </a>
-        </li>
-        <li class="nav-item menu-open">
-              <a href="./product" class="nav-link active">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Products</p>
-              </a>
-        </li>
-        <li class="nav-item menu-open">
-              <a href="<?php echo  base_url();?>user/logout" class="nav-link active">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Log Out</p>
-              </a>
-        </li>
-        
-      </ul>
-    </nav>
-    <!-- /.sidebar-menu -->
-  </div>
-  <!-- /.sidebar -->
-</aside>
-
-  <!-- Navbar -->
-  <!-- /.navbar -->
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Products</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Products</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -90,27 +28,22 @@
                   <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                    <th>Remaining Qty</th>
-                    <th>Price</th>
-                    <th>Status</th>
+                    <th>Prodcut Id</th>
+                    <th>Qty</th>
+                    <th>Total Price</th>
                     <th>Date</th>
                   </tr>
                   </thead>
                   <tbody>
-                      <?php foreach($products as $product){
+                      <?php foreach($mypurchace as $mypurchaces){
                           ?>
                           <tr>
-                    <td><?php echo $product->id;?></td>
-                    <td><?php echo $product->title;?></td>
-                    <td><?php echo $product->description;?></td>
-                    <td><?php echo $product->image;?></td>
-                    <td><?php echo $product->qty;?></td>
-                    <td><?php echo $product->price;?></td>
-                    <td><?php echo $product->status;?></td>
-                    <td><?php echo $product->created_date;?></td>
+                    <td><?php echo $mypurchaces->id;?></td>
+                    <td><?php echo $mypurchaces->product_id;?></td>
+                    <td><?php echo $mypurchaces->qty;?></td>
+                    <td><?php echo $mypurchaces->price;?></td>
+                    <td><?php echo $mypurchaces->created_date;?></td>
+                   
                   </tr>
                           <?php 
 
@@ -133,13 +66,6 @@
       </div>
       <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
 
 <!-- jQuery -->
 <script src="<?php echo base_url(); ?>public/plugins/jquery/jquery.min.js"></script>
