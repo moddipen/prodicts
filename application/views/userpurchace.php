@@ -17,6 +17,10 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>public/dist/css/adminlte.min.css">
 </head>
+<a href="<?php echo  base_url();?>user/logout" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Log Out</p>
+                </a>
     <section class="content">
       <div class="container-fluid">
         <div class="row">

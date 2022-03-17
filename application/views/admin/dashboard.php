@@ -26,6 +26,15 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>public/dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -98,14 +107,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3><?php echo $purchaseusercount;?></h3>
 
-                <p>New Orders</p>
+                <p>Purchase User</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+             
             </div>
           </div>
           <!-- ./col -->
@@ -113,14 +122,14 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3><?php  echo $activeproduct;?></h3>
 
-                <p>Bounce Rate</p>
+                <p>Active Product</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              
             </div>
           </div>
           <!-- ./col -->
@@ -128,14 +137,14 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3><?php echo $usercount;?></h3>
 
-                <p>User Registrations</p>
+                <p>Active and verified User</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            
             </div>
           </div>
           <!-- ./col -->
@@ -143,16 +152,31 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3><?php echo $activeattachproductqty;?></h3>
 
-                <p>Unique Visitors</p>
+                <p>Amount of active attach product</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              
             </div>
           </div>
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3><?php echo $activeattachproductprice;?>$</h3>
+
+                <p>Summarized total purchase price</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-dollar"></i>
+              </div>
+            
+            </div>
+          </div>
+          
           <!-- ./col -->
         </div>
         <!-- /.row -->
@@ -160,7 +184,53 @@
         <div class="row">
           <!-- Left col -->
           <section class="col-lg-7 connectedSortable">
-          
+         
+ <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <h3 class="m-5">Summarized prices of all active product per user<h3>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>User ID</th>
+                    <th>Total Purchase</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                      <?php foreach($userpurchase as $userpurchases){
+                          ?>
+                          <tr>
+                    <td><?php echo $userpurchases->user_id;?></td>
+                    <td><?php echo $userpurchases->price;?>$</td>
+                   
+                  </tr>
+                          <?php 
+
+                      }
+                      ?>
+                  
+                  </tbody>
+                  
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+
+
 
             
           </section>
@@ -224,5 +294,30 @@
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo base_url(); ?>public/dist/js/pages/dashboard.js"></script>
+
+<!-- jQuery -->
+<script src="<?php echo base_url(); ?>public/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="<?php echo base_url(); ?>public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="<?php echo base_url(); ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>public/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?php echo base_url(); ?>public/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url(); ?>public/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="<?php echo base_url(); ?>public/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url(); ?>public/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url(); ?>public/dist/js/adminlte.min.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>

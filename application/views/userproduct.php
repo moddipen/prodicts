@@ -175,6 +175,10 @@ a:hover {
 <body>
 <!-- partial:index.partial.html -->
 <section class="section-products">
+<a href="<?php echo  base_url();?>user/logout" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Log Out</p>
+                </a>
 		<div class="container">
 				<div class="row justify-content-center text-center">
 						<div class="col-md-8 col-lg-6">

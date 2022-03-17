@@ -5,7 +5,8 @@ class Dashboard extends CI_Controller {
     
     public function __construct(){
         parent::__construct();
-
+        $this->load->model('user_model');
+        $this->load->model('product_model');
         if(!$this->session->userdata('id'))
         {
             redirect('user');
@@ -19,7 +20,17 @@ class Dashboard extends CI_Controller {
     }
 
     function index(){
-        $this->load->view('admin/dashboard');
+
+
+        $data['usercount'] = $this->user_model->activeUserCount();
+        $data['purchaseusercount'] = $this->user_model->activepurchaseUserCount();
+        $data['activeproduct'] = $this->product_model->activeFindAllCount();
+        $data['activeattachproductqty'] = $this->product_model->activeattachproductqty();
+        $data['activeattachproductprice'] = $this->product_model->activeattachproductprice();
+        $data['userpurchase'] = $this->product_model->userbypurchaseSum();
+        
+
+        $this->load->view('admin/dashboard',$data);
     }
 
 
