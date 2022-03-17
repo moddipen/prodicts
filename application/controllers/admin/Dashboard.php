@@ -11,7 +11,7 @@ class Dashboard extends CI_Controller {
             redirect('user');
         } else {
             if($this->session->userdata('role') != 'admin'){
-                redirect('product');
+                redirect('userproduct');
             }
 
         }
