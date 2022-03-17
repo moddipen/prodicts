@@ -19,18 +19,11 @@ class Dashboard extends CI_Controller {
     }
 
     function index(){
-        $this->load->view('dashboard');
+        $this->load->view('admin/dashboard');
     }
 
 
-    function logout()
-    {
-        $data = $this->session->all_userdata();
-        foreach($data as $row => $rows_value){
-            $this->session->unset_userdata($row);
-        }
-        redirect('user');
-    }
+    
 
 }
 

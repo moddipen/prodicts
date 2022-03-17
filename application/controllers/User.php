@@ -27,7 +27,7 @@ class User extends CI_Controller {
             
             if($result == ''){
                 if($this->session->userdata('role')=='admin'){
-                    redirect('dashboard');
+                    redirect('admin/dashboard');
                 }else {
                     redirect('product');
                 }
@@ -124,5 +124,14 @@ class User extends CI_Controller {
             }
             $this->load->view('email_verification',$data);
         } 
+    }
+
+    function logout()
+    {
+        $data = $this->session->all_userdata();
+        foreach($data as $row => $rows_value){
+            $this->session->unset_userdata($row);
+        }
+        redirect('user');
     }
 }
